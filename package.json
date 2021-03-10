@@ -1,0 +1,24 @@
+{
+  "name": "logger",
+  "version": "1.0.0",
+  "description": "Helps Logging in the right Format, currently only for Google Cloud",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peaksandpies/logger.git"
+  },
+  "keywords": [
+    "logger",
+    "google",
+    "cloud"
+  ],
+  "author": "Phillip Lassen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peaksandpies/logger/issues"
+  },
+  "homepage": "https://github.com/peaksandpies/logger#readme"
+}
