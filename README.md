@@ -1,1 +1,39 @@
 # logger
+Formatted logging for google cloud projects using the right severity with a maximum of 1000 characters.
+https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#LogSeverity
+
+Logging is called by 
+
+```
+logger.{severity}(message[,..args])
+```
+
+e.g.
+
+```
+logger.info('Text to Log', { key: 1 })
+```
+
+will result in the google format:
+
+```
+{
+    "severity": "INFO",
+    "message": "Text to Log { key: 1 }",
+    "timestamp": "2021-03-10T11:45:09.080Z"
+}
+```
+
+and is logged as JSON.stringified:
+
+````
+{"severity": "INFO","message": "Text to Log { key: 1 }","timestamp": "2021-03-10T11:45:09.080Z"}
+```
+
+## Testing
+
+When testing (`process.env.NODE_ENV === 'test'`) the log is wirtten into a single line, e.g.
+
+```
+2021-03-10T11:45:09.080Z - INFO -- Text to Log { key: 1 }
+```
