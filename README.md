@@ -1,6 +1,9 @@
 # logger
 Formatted logging for google cloud projects using the right severity with a maximum of 1000 characters.
-https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#LogSeverity
+
+Severity: https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#LogSeverity
+Strucutred log example: https://cloud.google.com/functions/docs/monitoring/logging#writing_structured_logs
+Structured log format https://cloud.google.com/run/docs/logging#log-resource 
 
 Logging is called by 
 
