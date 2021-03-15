@@ -1,4 +1,5 @@
-const { red, yellow, blue, white } = require('chalk')
+const { red, yellow, blue, white, green } = require('chalk')
+const env = process.env.NODE_ENV
 
 const logger = {
     /**
@@ -15,7 +16,7 @@ const logger = {
         timestamp: (new Date()).toISOString()
       }
 
-      if (process.env.NODE_ENV === 'test') {
+      if (env === 'test') {
         const severity = logObj.severity.toUpperCase()
         const timestamp = logObj.timestamp.slice(11, 19)
         let color = white
@@ -50,7 +51,8 @@ const logger = {
      */
     _handleMessage (message, ...args) {
       const maxLength = 1000
-      return [ message, ...args ].map(el => typeof el === 'string' ? el : JSON.stringify(el)).join(' ').slice(0, maxLength)
+      message = env === 'test' && Number.isInteger(message) ? green(message) : message
+      return [message , ...args ].map(el => typeof el === 'string' ? el : JSON.stringify(el)).join(' ').slice(0, maxLength)
     },
 
     /**
