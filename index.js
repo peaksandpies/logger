@@ -23,7 +23,7 @@ const logger = {
           case ['INFO', 'DEBUG'].includes(severity):
             color = blue
             break
-          case ['WARN'].includes(severity):
+          case ['WARNING'].includes(severity):
             color = yellow
             break
           case ['ERROR'].includes(severity):
