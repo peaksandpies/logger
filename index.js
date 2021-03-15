@@ -1,3 +1,5 @@
+const { red, yellow, blue, white } = require('chalk')
+
 const logger = {
     /**
      * Logs with severity level in Google format.
@@ -10,30 +12,47 @@ const logger = {
       const logObj = {
         severity: level,
         message: this._handleMessage(message, ...args),
-        timestamp: new Date().toISOString()
+        timestamp: (new Date()).toISOString()
       }
-      
+
       if (process.env.NODE_ENV === 'test') {
-        console.log(`${logObj.timestamp} - ${logObj.severity} -- ${logObj.message}`)
+        const severity = logObj.severity.toUpperCase()
+        const timestamp = logObj.timestamp.slice(11, 19)
+        let color = white
+        switch (true) {
+          case ['INFO', 'DEBUG'].included(severity):
+            color = blue
+            break
+          case ['WARN'].included(severity):
+            color = yellow
+            break
+          case ['ERROR'].included(severity):
+            color = red
+            break
+          default:
+            color = white
+            break
+        }
+        console.log(`${timestamp} - ${color(severity)} -- ${logObj.message}`)
       } else {
         const logStringified = JSON.stringify(logObj)
         console.log(logStringified)
       }
     },
-  
+
     /**
-     * Handle message for Google.  
+     * Handle message for Google.
      *
      * @param {any} message The message to log
      * @param {any[]} args enhanced data to log
-     * 
+     *
      * @returns {string} List of space separated message and args, strigified, with a max. of 1000.
      */
     _handleMessage (message, ...args) {
       const maxLength = 1000
       return [ message, ...args ].map(el => typeof el === 'string' ? el : JSON.stringify(el)).join(' ').slice(0, maxLength)
     },
-  
+
     /**
      * Log error.
      *
@@ -41,7 +60,7 @@ const logger = {
      * @param {any[]} args enhanced data to log
      */
     error (message, ...args) { this._log('ERROR', message, ...args) },
-  
+
     /**
      * Log warning.
      *
@@ -49,7 +68,7 @@ const logger = {
      * @param {any[]} args enhanced data to log
      */
     warn (message, ...args) { this._log('WARNING', message, ...args) },
-  
+
     /**
      * Log info.
      *
@@ -57,7 +76,7 @@ const logger = {
      * @param {any[]} args enhanced data to log
      */
     info (message, ...args) { this._log('INFO', message, ...args) },
-  
+
     /**
      * Log verbose.
      *
@@ -69,7 +88,7 @@ const logger = {
         this._log('VERBOSE', message, ...args)
       }
     },
-  
+
     /**
      * Log debug.
      *
@@ -81,7 +100,7 @@ const logger = {
         this._log('DEBUG', message, ...args)
       }
     },
-  
+
     /**
      * Log silly.
      *
@@ -91,6 +110,5 @@ const logger = {
       process.stdout.write(message + '\n')
     }
   }
-  
+
   module.exports = logger
-  

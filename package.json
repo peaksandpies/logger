@@ -1,6 +1,6 @@
 {
   "name": "logger",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Helps Logging in the right Format, currently only for Google Cloud",
   "main": "index.js",
   "scripts": {
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/peaksandpies/logger/issues"
   },
-  "homepage": "https://github.com/peaksandpies/logger#readme"
+  "homepage": "https://github.com/peaksandpies/logger#readme",
+  "dependencies": {
+    "chalk": "^4.1.0"
+  }
 }
