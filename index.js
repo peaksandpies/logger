@@ -20,13 +20,13 @@ const logger = {
         const timestamp = logObj.timestamp.slice(11, 19)
         let color = white
         switch (true) {
-          case ['INFO', 'DEBUG'].included(severity):
+          case ['INFO', 'DEBUG'].includes(severity):
             color = blue
             break
-          case ['WARN'].included(severity):
+          case ['WARN'].includes(severity):
             color = yellow
             break
-          case ['ERROR'].included(severity):
+          case ['ERROR'].includes(severity):
             color = red
             break
           default:
