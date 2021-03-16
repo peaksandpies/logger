@@ -1,5 +1,7 @@
 const { red, yellow, blue, white, green } = require('chalk')
-const env = process.env.NODE_ENV
+
+const { NODE_ENV } = process.env
+const TEST_ENV = NODE_ENV === 'test'
 
 const logger = {
     /**
@@ -16,7 +18,7 @@ const logger = {
         timestamp: (new Date()).toISOString()
       }
 
-      if (env === 'test') {
+      if (TEST_ENV) {
         const severity = logObj.severity.toUpperCase()
         const timestamp = logObj.timestamp.slice(11, 19)
         let color = white
@@ -51,7 +53,7 @@ const logger = {
      */
     _handleMessage (message, ...args) {
       const maxLength = 1000
-      message = env === 'test' && Number.isInteger(message) ? green(message) : message
+      message = TEST_ENV && Number.isInteger(message) ? green(message) : message
       return [message , ...args ].map(el => typeof el === 'string' ? el : JSON.stringify(el)).join(' ').slice(0, maxLength)
     },
 
@@ -98,7 +100,7 @@ const logger = {
      * @param {any[]} args enhanced data to log
      */
     debug (message, ...args) {
-      if (process.env.NODE_ENV === 'test') {
+      if (TEST_ENV) {
         this._log('DEBUG', message, ...args)
       }
     },
