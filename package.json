@@ -4,7 +4,8 @@
   "description": "Helps Logging in the right Format, currently only for Google Cloud",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "types": "npx typescript index.js --declaration --allowJs --emitDeclarationOnly --outDir ."
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,8 @@
   "homepage": "https://github.com/peaksandpies/logger#readme",
   "dependencies": {
     "chalk": "^4.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.3"
   }
 }
