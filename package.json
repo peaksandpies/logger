@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/peaksandpies/logger#readme",
   "dependencies": {
-    "chalk": "^4.1.0"
+    "@google-cloud/logging-winston": "^4.0.4",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "typescript": "^4.2.3"
