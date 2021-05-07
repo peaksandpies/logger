@@ -1,13 +1,17 @@
-const { createLogger } = require('winston')
-const { NODE_RUN } = process.env
+'use strict'
 
-let logConfig
-try {
-  logConfig = require(`./lib/runtime/${NODE_RUN}`)
-} catch (err) {
-  console.log(`runtime ${NODE_RUN} not defined, using local`)
-  logConfig = require(`./lib/runtime/local`)
-}
+const { createLogger } = require('winston')
+const runtime = process.env.NODE_RUN || 'local'
+const logModule = `./lib/runtimes/${runtime}`
+const logConfig = require(logModule)
+
+// try {
+//   logConfig = require(`./lib/runtimes/${runtime}`)
+// } catch (err) {
+//   console.log(`runtime ${runtime} not defined, using local`)
+//   logConfig = require(`./lib/runtimes/local`)
+// }
+
 const logger = createLogger(logConfig)
 
 module.exports = logger

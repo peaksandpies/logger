@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "types": "npx typescript index.js --declaration --allowJs --emitDeclarationOnly --outDir ."
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "types": "tsc index.js --declaration --allowJs --emitDeclarationOnly --outDir ."
   },
   "repository": {
     "type": "git",
