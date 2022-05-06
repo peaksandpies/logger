@@ -15,7 +15,7 @@ updates:
     commit-message:
       prefix: "(fix) update"
     ignore:
-      - dependancy-name: "*"
+      - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
     open-pull-requests-limit: 10
     # Disable rebasing for npm pull requests
