@@ -20,5 +20,3 @@ updates:
     open-pull-requests-limit: 10
     # Disable rebasing for npm pull requests
     rebase-strategy: "disabled"
-    reviewers:
-      - "pip77"
