@@ -1,13 +1,12 @@
 {
   "name": "logger",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Helps Logging in the right Format, currently only for Google Cloud",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "types": "tsc index.js --declaration --allowJs --emitDeclarationOnly --outDir ."
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -25,10 +24,7 @@
   },
   "homepage": "https://github.com/peaksandpies/logger#readme",
   "dependencies": {
-    "@google-cloud/logging-winston": "^4.2.3",
-    "winston": "^3.3.3"
-  },
-  "devDependencies": {
-    "typescript": "^4.6.4"
+    "@google-cloud/logging-winston": "^6.0.0",
+    "winston": "^3.11.0"
   }
 }
