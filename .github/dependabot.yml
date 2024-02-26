@@ -1,22 +1,19 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "daily"
-      day: "monday"
-      time: "08:30"
-      timezone: "CET"
-    target-branch: "main"
+      interval: 'weekly'
+    target-branch: 'main'
     labels:
-      - "Dependabot"
+      - 'master'
     pull-request-branch-name:
-      separator: "-"
+      separator: '-'
     commit-message:
-      prefix: "(fix) update"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-patch"]
+      prefix: '(fix) update'
     open-pull-requests-limit: 10
     # Disable rebasing for npm pull requests
-    rebase-strategy: "disabled"
+    rebase-strategy: 'disabled'
+    reviewers:
+      - 'pip77'
+      - 'marionfischer'
