@@ -12,8 +12,6 @@ updates:
     commit-message:
       prefix: '(fix) update'
     open-pull-requests-limit: 10
-    # Disable rebasing for npm pull requests
-    rebase-strategy: 'disabled'
     reviewers:
       - 'pip77'
       - 'marionfischer'
