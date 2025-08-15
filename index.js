@@ -16,7 +16,6 @@ const setGlobalLabels = (labels) => {
   logger.defaultMeta = labels
 }
 
-module.exports = {
-  logger,
-  setGlobalLabels,
-}
+module.exports = logger
+module.exports.setGlobalLabels = setGlobalLabels
+module.exports.default = logger
