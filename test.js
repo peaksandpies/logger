@@ -1,9 +1,9 @@
 const { setGlobalLabels, logger } = require('./index.js')
 
-const myLabels = {
+const logMeta = {
   jobId: 'abc-123',
 }
-setGlobalLabels({ jobMeta: myLabels })
+setGlobalLabels({ jobMeta: logMeta })
 let cnt = 10
 for (let i = 0; i < cnt; i++) {
   logger.info(`run ${i}`, { test: true, meta: 'test' }, 7)
@@ -16,5 +16,3 @@ logger.debug('debug')
 logger.warn('warn')
 logger.verbose('verbose')
 logger.silly('silly')
-
-logger.info('job')
