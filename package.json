@@ -4,9 +4,7 @@
   "description": "Helps Logging in the right Format, currently only for Google Cloud",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
