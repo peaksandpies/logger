@@ -12,6 +12,3 @@ updates:
     commit-message:
       prefix: '(fix) update'
     open-pull-requests-limit: 10
-    reviewers:
-      - 'pip77'
-      - 'marionfischer'
