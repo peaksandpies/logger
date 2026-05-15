@@ -1,12 +1,16 @@
 'use strict'
 const { createLogger } = require('winston')
-const runtime = process.env.NODE_RUN || 'local'
+const { detectRuntime } = require('./lib/helper')
+
+const runtime = detectRuntime()
 
 let logConfig
 try {
   logConfig = require(`./lib/runtimes/${runtime}`)
 } catch {
-  console.log(`runtime ${runtime} not defined, using local`)
+  if (process.env.NODE_RUN) {
+    console.warn(`runtime ${runtime} not defined, using local`)
+  }
   logConfig = require('./lib/runtimes/local')
 }
 
