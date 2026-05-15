@@ -20,7 +20,7 @@ While Winston is powerful, configuring it correctly for different cloud environm
 ## Installation
 
 ```bash
-npm install @peaksandpies/logger
+npm install @peaksandpies/logger[#version]
 ```
 
 ## Usage
