@@ -4,17 +4,6 @@ const { detectRuntime, safeStringify, handleMessage } = require('../lib/helper')
 
 describe('Helper Functions', () => {
   describe('detectRuntime', () => {
-    const originalEnv = process.env
-
-    beforeEach(() => {
-      jest.resetModules()
-      process.env = { ...originalEnv }
-    })
-
-    afterAll(() => {
-      process.env = originalEnv
-    })
-
     it('should prioritize NODE_RUN', () => {
       process.env.NODE_RUN = 'custom-runtime'
       expect(detectRuntime()).toBe('custom-runtime')

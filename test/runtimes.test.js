@@ -3,17 +3,6 @@
 const winston = require('winston')
 
 describe('Runtime Formats', () => {
-  const originalEnv = process.env
-
-  beforeEach(() => {
-    jest.resetModules()
-    process.env = { ...originalEnv }
-  })
-
-  afterAll(() => {
-    process.env = originalEnv
-  })
-
   describe('Local Runtime', () => {
     it('should format logs as plain text with timestamp', () => {
       const logConfig = require('../lib/runtimes/local')

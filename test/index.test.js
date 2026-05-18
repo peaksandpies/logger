@@ -1,17 +1,6 @@
 'use strict'
 
 describe('Logger Initialization', () => {
-  const originalEnv = process.env
-
-  beforeEach(() => {
-    jest.resetModules()
-    process.env = { ...originalEnv }
-  })
-
-  afterAll(() => {
-    process.env = originalEnv
-  })
-
   it('should load the local runtime by default', () => {
     const logger = require('../index')
     expect(logger.transports[0].name).toBe('console')
@@ -24,8 +13,23 @@ describe('Logger Initialization', () => {
     expect(logger).toBeDefined()
   })
 
-  it('should expose setGlobalLabels', () => {
+  it('should expose and call setGlobalLabels correctly', () => {
+    const logger = require('../index')
     const { setGlobalLabels } = require('../index')
     expect(typeof setGlobalLabels).toBe('function')
+
+    setGlobalLabels({ env: 'production' })
+    expect(logger.defaultMeta).toEqual({ env: 'production' })
+  })
+
+  it('should warn and fallback to local when NODE_RUN is set to an undefined runtime', () => {
+    process.env.NODE_RUN = 'non-existent-runtime'
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+
+    const logger = require('../index')
+    expect(logger.transports[0].name).toBe('console')
+    expect(warnSpy).toHaveBeenCalledWith('runtime non-existent-runtime not defined, using local')
+
+    warnSpy.mockRestore()
   })
 })

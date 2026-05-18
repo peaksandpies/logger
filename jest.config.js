@@ -5,4 +5,5 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   collectCoverageFrom: ['index.js', 'lib/**/*.js'],
+  setupFilesAfterEnv: ['<rootDir>/test/setup.js'],
 }
