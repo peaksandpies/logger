@@ -51,9 +51,12 @@ describe('Runtime Formats', () => {
   describe('Kubernetes Runtime', () => {
     it('should map levels to Stackdriver severities', () => {
       const logConfig = require('../lib/runtimes/kubernetes')
+      // Simulate what Winston actually sets on the info object.
+      // Winston sets info.level (string) and info[Symbol.for('level')] (Symbol),
+      // but NOT info.LEVEL as a plain string property.
       const info = {
         level: 'warn',
-        LEVEL: 'warn',
+        [Symbol.for('level')]: 'warn',
         message: 'something happened',
       }
 
@@ -66,7 +69,7 @@ describe('Runtime Formats', () => {
       const error = new Error('sub error')
       const info = {
         level: 'error',
-        LEVEL: 'error',
+        [Symbol.for('level')]: 'error',
         message: 'main error',
         details: { err: error },
       }
