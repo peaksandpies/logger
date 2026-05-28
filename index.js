@@ -17,7 +17,7 @@ try {
 const logger = createLogger(logConfig)
 
 const setGlobalLabels = (labels) => {
-  logger.defaultMeta = labels
+  logger.defaultMeta = { ...logger.defaultMeta, ...labels }
 }
 
 module.exports = logger
