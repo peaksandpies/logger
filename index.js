@@ -22,4 +22,4 @@ const setGlobalLabels = (labels) => {
 
 module.exports = logger
 module.exports.setGlobalLabels = setGlobalLabels
-module.exports.default = logger
+module.exports.logger = logger
