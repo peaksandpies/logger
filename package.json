@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/peaksandpies/logger#readme",
   "dependencies": {
-    "@google-cloud/logging-winston": "^6.0.2",
+    "@google-cloud/logging-winston": "^7.0.0",
     "winston": "^3.19.0"
   },
   "devDependencies": {
